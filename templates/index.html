@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block title %} HOME {% endblock %}
+{% block content %}
+<body>
+<h1 style="color: red">HOME PAGE</h1>
+
+<p>You are in homepage now!</p>
+<h2>Registration form</h2>
+<form action="http://127.0.0.1:5000/register" method="POST" enctype="multipart/form-data">
+    Name <input type="text" name="name" id="name"><br>
+    Phone <input type="text" name="number" id="number"><br>
+    Email <input type="email" name="email"><br>
+    <button type="submit">submit</button>
+
+    <br><br><br><br>
+
+    <p>Change url path from register to upload HERE!</p>
+    <input type="file" name="file">
+    <button type="submit">upload</button>
+</form>
+</body>
+{% endblock %}
+</html>
