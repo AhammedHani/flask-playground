@@ -12,11 +12,16 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/upload', methods=['POST'])
-def upload():
+@app.route('/uploads', methods=['POST'])
+def uploads():
     file = request.files['file']
     file.save(os.path.join(app.config['UPLOAD_PATH'], file.filename))
     return 'uploaded successfully'
+
+
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
 
 
 @app.route('/register', methods=['POST'])
@@ -41,6 +46,21 @@ def products():
 def contact():
     return render_template('contact.html')
 
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['name'] == 'user' and request.form['password'] == '12345':
+            return render_template('dashboard.html')
+        else:
+            error = "Wrong user or password"
+            return render_template('login.html', error=error)
+    else:
+        return render_template('login.html')
+
+
+app.add_url_rule('/home', 'home', home)
 
 if __name__ == '__main__':
     app.run(debug=True)

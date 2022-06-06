@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} Upload {% endblock %}
+{% block content %}
+<h1>Upload your image here</h1>
+<form action="http://127.0.0.1:5000/uploads" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+</form>
+{% endblock %}
